@@ -7,7 +7,6 @@ import { Cron, CronExpression, SchedulerRegistry } from '@nestjs/schedule';
 export class TaskService {
   constructor(
     private schedulerRegistry: SchedulerRegistry) {
-      console.log(process.env.TIME_SCHEDULE)
     }
 
   private readonly logger = new Logger(TaskService.name);

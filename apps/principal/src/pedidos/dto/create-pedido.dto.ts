@@ -2,12 +2,14 @@ import { IsNotEmpty, IsEmail, IsEnum, ValidateIf, IsDate, IsString, IsBoolean, I
 import { ApiProperty } from '@nestjs/swagger';
 import { proveedoresCorreo, tipoEntraga, tipoNotificacion } from "../constants/api.enums";
 import { v4 as uuidv4 } from 'uuid';
+import { Type } from "class-transformer";
 
 export class CreatePedidoDto {
     @ApiProperty()
+    @Type(() => Date)
     @IsDate()
     @IsNotEmpty({ message: 'La Fecha de Emision es obligatorio'})
-    fecha_emision: Date;
+    readonly fecha_emision: Date;
     
     @ApiProperty()
     @IsString()

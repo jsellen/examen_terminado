@@ -49,7 +49,9 @@ export class NotificacionesService {
 
   async findOne(id: string) {
     const resp = await this.notificacionModel.updateOne({_id: id} , { estado: true });
-    return resp
+    if (!resp)
+        throw new HttpException(`No existe nigun registro con dicho Id ${id}`, HttpStatus.INTERNAL_SERVER_ERROR);    
+    return await this.notificacionModel.findById(id);
   }
 
   async update(id: string, _updateNotificacioneDto:UpdateNotificacioneDto) {

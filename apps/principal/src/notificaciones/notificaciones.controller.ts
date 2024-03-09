@@ -17,6 +17,7 @@ export class NotificacionesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
+    
     return this.notificacionesService.findOne(id);
   }
 

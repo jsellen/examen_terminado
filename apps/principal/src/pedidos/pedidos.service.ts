@@ -25,6 +25,8 @@ export class PedidosService {
    create(_createPedidoDto: CreatePedidoDto) {
     // createPedidoDto trae en BODY los datos
     const pedidoCreated = this.pedidoModel.create(_createPedidoDto); 
+    if (!pedidoCreated)
+      throw new HttpException('El servidor no puede o no procesará la petición debido a algo que es percibido como un error del cliente', HttpStatus.BAD_REQUEST);
     //----  Si se guarda un pedido por Lote
     //----  Comprobamos si llega a la cantidad minima por Lote 
     if (_createPedidoDto.tipo_notificacion == 'Por Lote') {
