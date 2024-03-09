@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/principal/src",
+  "compilerOptions": {
+    "assets": [
+      "mail/templates/**"
+    ],
+    "watchAssets": true,
+    "webpack": true,
+    "tsConfigPath": "apps/principal/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/principal",
+  "projects": {
+    "principal": {
+      "type": "application",
+      "root": "apps/principal",
+      "entryFile": "main",
+      "sourceRoot": "apps/principal/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/principal/tsconfig.app.json"
+      }
+    },
+    "app_correos": {
+      "type": "application",
+      "root": "apps/app_correos",
+      "entryFile": "main",
+      "sourceRoot": "apps/app_correos/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/app_correos/tsconfig.app.json"
+      }
+    }
+  }
+}
