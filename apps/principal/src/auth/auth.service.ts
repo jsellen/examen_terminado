@@ -31,7 +31,7 @@ export class AuthService {
     const userExist = await this.userModel.findOne({
       email: userLoginBody.email,
     });
-    if (!userExist) throw new HttpException('NOT_FOUND', HttpStatus.NOT_FOUND);
+    if (!userExist) throw new HttpException('USER_NOT_FOUND', HttpStatus.NOT_FOUND);
 
     const isCheck = await compareHash(password, userExist.password);
     if (!isCheck)
