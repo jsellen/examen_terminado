@@ -6,11 +6,13 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  const PORT = process.env.PORT || 3001;
+
   const config = new DocumentBuilder()
   .addBearerAuth()
   .setTitle('Examen')
   .setDescription('Esta es para el tarea de Nest.js')
-  .setVersion('1.0')
+  .setVersion('2.0')
   .addTag('users')
   .addTag('auth')
   .addTag('pedidos')
@@ -29,6 +31,6 @@ async function bootstrap() {
     }
     )
   );
-  await app.listen(3001);
+  await app.listen(PORT);
 }
 bootstrap();
